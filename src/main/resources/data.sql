@@ -1,0 +1,1 @@
+INSERT INTO CAR_MODEL (brand, fuel, year_manufacture, capacity) VALUES ('Fiat', 'Gasoline', '2021', '5');
