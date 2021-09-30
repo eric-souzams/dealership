@@ -1,8 +1,8 @@
 package com.project.Dealership.controller;
 
-import com.project.Dealership.dto.request.ClientRequest;
-import com.project.Dealership.dto.response.ClientResponse;
-import com.project.Dealership.service.ClientService;
+import com.project.Dealership.dto.request.CarModelRequest;
+import com.project.Dealership.dto.response.CarModelResponse;
+import com.project.Dealership.service.CarModelService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,29 +15,30 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping(value = "/clients")
-public class ClientController {
+@RequestMapping(value = "/car-models")
+public class CarModelController {
 
-    private final ClientService clientService;
+    private final CarModelService carModelService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Page<ClientResponse>> getAll(Pageable pageable) {
-        Page<ClientResponse> result = clientService.findAll(pageable);
+    public ResponseEntity<Page<CarModelResponse>> getAll(Pageable pageable) {
+        Page<CarModelResponse> result = carModelService.findAll(pageable);
 
         return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientResponse> getOne(@PathVariable("id") Long id) {
-        ClientResponse result = clientService.find(id);
+    public ResponseEntity<CarModelResponse> getOne(@PathVariable("id") Long id) {
+        CarModelResponse result = carModelService.find(id);
 
         return ResponseEntity.ok(result);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ClientResponse> create(@RequestBody @Valid ClientRequest request) {
-        ClientResponse result = clientService.save(request);
+    public ResponseEntity<CarModelResponse> create(@RequestBody @Valid CarModelRequest request) {
+        CarModelResponse result = carModelService.save(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
+
 }

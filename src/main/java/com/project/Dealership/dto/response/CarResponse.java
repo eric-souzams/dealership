@@ -2,8 +2,6 @@ package com.project.Dealership.dto.response;
 
 import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.entity.CarModel;
-import com.project.Dealership.model.enums.Situation;
-import com.project.Dealership.model.enums.State;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +11,8 @@ public class CarResponse {
 
     private Long id;
     private String name;
-    private State state;
-    private Situation situation;
+    private String state;
+    private String situation;
     private String description;
     private CarModel model;
     private Double price;
@@ -24,8 +22,8 @@ public class CarResponse {
 
         response.setId(car.getId());
         response.setName(car.getName());
-        response.setState(car.getState());
-        response.setSituation(car.getSituation());
+        response.setState(car.getState().getDescription());
+        response.setSituation(car.getSituation().getDescription());
         response.setDescription(car.getDescription());
         response.setModel(car.getModel());
         response.setPrice(car.getPrice());

@@ -9,6 +9,7 @@ import com.project.Dealership.model.entity.CarModel;
 import com.project.Dealership.model.enums.Situation;
 import com.project.Dealership.repository.CarModelRepository;
 import com.project.Dealership.repository.CarRepository;
+import com.project.Dealership.utils.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -52,12 +53,12 @@ public class CarService {
 
     private Car verifyIfCarExist(Long carId) {
         return carRepository.findById(carId)
-                .orElseThrow(() -> new CarNotFoundException("Car not has found."));
+                .orElseThrow(() -> new CarNotFoundException(Messages.CAR_NOT_FOUND));
     }
 
     private CarModel verifyIfCarModelExist(Long modelId) {
         return carModelRepository.findById(modelId)
-                .orElseThrow(() -> new CarModelNotFoundException("Car model not has found."));
+                .orElseThrow(() -> new CarModelNotFoundException(Messages.CAR_MODEL_NOT_FOUND));
     }
 
 }

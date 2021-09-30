@@ -5,6 +5,8 @@ import com.project.Dealership.model.enums.State;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -16,6 +18,8 @@ public class CarRequest {
     private String name;
 
     @NotNull
+    @Min(0)
+    @Max(2)
     private Integer state;
 
     @NotBlank
