@@ -3,18 +3,15 @@ package com.project.Dealership.model.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 public class Client {
-
-    public Client() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +27,11 @@ public class Client {
 
     private String address;
 
-    //relation that include all bought cars
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Car> boughtCars = new ArrayList<>();
+
+    public void addCar(Car car) {
+        this.getBoughtCars().add(car);
+    }
 
 }

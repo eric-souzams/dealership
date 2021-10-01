@@ -61,6 +61,7 @@ public class SalesService {
         sale.setSold_at(LocalDateTime.now());
 
         sale = salesRepository.save(sale);
+        client.addCar(car);
 
         return SaleResponse.toResponse(sale);
     }

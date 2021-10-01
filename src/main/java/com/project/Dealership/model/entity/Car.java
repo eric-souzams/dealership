@@ -12,8 +12,6 @@ import javax.persistence.*;
 @Setter
 public class Car {
 
-    public Car() {}
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
