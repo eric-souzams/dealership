@@ -19,4 +19,7 @@ public abstract class Messages {
     //Employee
     public static final String EMPLOYEE_NOT_FOUND = "Employee not has found.";
 
+    //Handler Exceptions
+    public static final String INVALID_FIELDS = "One or more fields are invalid. Fill in correctly and try again.";
+
 }
