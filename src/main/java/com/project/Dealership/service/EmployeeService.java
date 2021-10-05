@@ -37,6 +37,7 @@ public class EmployeeService {
     public EmployeeResponse save(EmployeeRequest request) {
         Employee employee = EmployeeRequest.toEntity(request);
 
+        employee.setTotalSalesCount(0L);
         employee = employeeRepository.save(employee);
 
         return EmployeeResponse.toResponse(employee);

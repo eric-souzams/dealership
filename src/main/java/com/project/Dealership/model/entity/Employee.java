@@ -29,4 +29,11 @@ public class Employee {
     @Enumerated(EnumType.ORDINAL)
     private Profile profile;
 
+    private Long totalSalesCount;
+
+    public void incrementTotalSales() {
+        this.totalSalesCount++;
+    }
+
+
 }

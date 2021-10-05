@@ -11,8 +11,6 @@ import java.time.LocalDateTime;
 @Setter
 public class Sales {
 
-    public Sales() {}
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,6 +20,9 @@ public class Sales {
 
     @ManyToOne
     private Client client;
+
+    @ManyToOne
+    private Employee employee;
 
     private LocalDateTime sold_at;
 }

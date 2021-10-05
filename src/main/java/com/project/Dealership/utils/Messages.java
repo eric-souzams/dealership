@@ -16,4 +16,7 @@ public abstract class Messages {
     public static final String SALE_NOT_FOUND = "Sale not has found.";
     public static final String SALE_CANNOT_BE_MADE = "It's not possible to make this purchase.";
 
+    //Employee
+    public static final String EMPLOYEE_NOT_FOUND = "Employee not has found.";
+
 }

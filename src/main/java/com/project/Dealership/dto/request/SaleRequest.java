@@ -15,4 +15,7 @@ public class SaleRequest {
     @NotNull
     private Long clientId;
 
+    @NotNull
+    private Long employeeId;
+
 }

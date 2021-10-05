@@ -2,6 +2,7 @@ package com.project.Dealership.dto.response;
 
 import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.entity.Client;
+import com.project.Dealership.model.entity.Employee;
 import com.project.Dealership.model.entity.Sales;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,8 @@ public class SaleResponse {
 
     private Client client;
 
+    private Employee employee;
+
     private LocalDateTime sold_at;
 
     public static SaleResponse toResponse(Sales sale) {
@@ -26,6 +29,7 @@ public class SaleResponse {
         response.setId(sale.getId());
         response.setCar(sale.getCar());
         response.setClient(sale.getClient());
+        response.setEmployee(sale.getEmployee());
         response.setSold_at(sale.getSold_at());
 
         return response;

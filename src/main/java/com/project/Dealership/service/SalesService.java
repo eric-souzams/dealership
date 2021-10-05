@@ -2,22 +2,20 @@ package com.project.Dealership.service;
 
 import com.project.Dealership.dto.request.SaleRequest;
 import com.project.Dealership.dto.response.SaleResponse;
-import com.project.Dealership.exceptions.CarNotFoundException;
-import com.project.Dealership.exceptions.ClientNotFoundException;
-import com.project.Dealership.exceptions.SaleCannotBeMadeException;
-import com.project.Dealership.exceptions.SaleNotFoundException;
+import com.project.Dealership.exceptions.*;
 import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.entity.Client;
+import com.project.Dealership.model.entity.Employee;
 import com.project.Dealership.model.entity.Sales;
 import com.project.Dealership.model.enums.Situation;
 import com.project.Dealership.repository.CarRepository;
 import com.project.Dealership.repository.ClientRepository;
+import com.project.Dealership.repository.EmployeeRepository;
 import com.project.Dealership.repository.SalesRepository;
 import com.project.Dealership.utils.Messages;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +28,7 @@ public class SalesService {
     private final SalesRepository salesRepository;
     private final ClientRepository clientRepository;
     private final CarRepository carRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Transactional(readOnly = true)
     public Page<SaleResponse> findAll(Pageable pageable) {
@@ -51,6 +50,7 @@ public class SalesService {
 
         Car car = verifyIfCarExist(request.getCarId());
         Client client = verifyIfClientExist(request.getClientId());
+        Employee employee = verifyIfEmployeeExist(request.getEmployeeId());
 
         verifyIfCanSellACar(car.getSituation());
 
@@ -58,10 +58,14 @@ public class SalesService {
 
         sale.setCar(car);
         sale.setClient(client);
+        sale.setEmployee(employee);
         sale.setSold_at(LocalDateTime.now());
 
         sale = salesRepository.save(sale);
+
         client.addCar(car);
+
+        employee.incrementTotalSales();
 
         return SaleResponse.toResponse(sale);
     }
@@ -85,6 +89,11 @@ public class SalesService {
         if (situation == Situation.SOLD) {
             throw new SaleCannotBeMadeException(Messages.SALE_CANNOT_BE_MADE);
         }
+    }
+
+    private Employee verifyIfEmployeeExist(Long employeeId) {
+        return employeeRepository.findById(employeeId)
+                .orElseThrow(() -> new EmployeeNotFoundException(Messages.EMPLOYEE_NOT_FOUND));
     }
 
 }

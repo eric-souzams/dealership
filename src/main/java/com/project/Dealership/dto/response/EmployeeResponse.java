@@ -1,6 +1,7 @@
 package com.project.Dealership.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +27,8 @@ public class EmployeeResponse {
 
     private String profile;
 
+    private Long totalSalesCount;
+
     public static EmployeeResponse toResponse(Employee employee) {
         EmployeeResponse result = new EmployeeResponse();
 
@@ -36,6 +39,7 @@ public class EmployeeResponse {
         result.setCpf(employee.getCpf());
         result.setAddress(employee.getAddress());
         result.setProfile(employee.getProfile().getDescription());
+        result.setTotalSalesCount(employee.getTotalSalesCount());
 
         return result;
     }
