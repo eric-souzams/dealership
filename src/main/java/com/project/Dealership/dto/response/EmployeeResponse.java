@@ -29,6 +29,8 @@ public class EmployeeResponse {
 
     private Long totalSalesCount;
 
+    private Boolean isActive;
+
     public static EmployeeResponse toResponse(Employee employee) {
         EmployeeResponse result = new EmployeeResponse();
 
@@ -40,6 +42,7 @@ public class EmployeeResponse {
         result.setAddress(employee.getAddress());
         result.setProfile(employee.getProfile().getDescription());
         result.setTotalSalesCount(employee.getTotalSalesCount());
+        result.setIsActive(employee.getIsActive());
 
         return result;
     }

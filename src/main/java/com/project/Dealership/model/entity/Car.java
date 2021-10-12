@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,5 +33,12 @@ public class Car {
     private CarModel model;
 
     private Double price;
+
+    @ElementCollection()
+    private List<String> files = new ArrayList<>();
+
+    public void addFiles(List<String> files) {
+        this.getFiles().addAll(files);
+    }
 
 }

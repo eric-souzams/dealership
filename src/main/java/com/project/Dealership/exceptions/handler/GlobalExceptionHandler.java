@@ -3,6 +3,7 @@ package com.project.Dealership.exceptions.handler;
 import com.project.Dealership.exceptions.*;
 import com.project.Dealership.utils.Messages;
 import lombok.AllArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -46,11 +47,25 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(errorDescription);
     }
 
+    @ExceptionHandler(SizeLimitExceededException.class)
+    public ResponseEntity<Object> handleSizeLimitExceeded(SizeLimitExceededException exception) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+
+        ErrorDescription errorDescription = ErrorDescription
+                .builder()
+                .status(status.value())
+                .time(OffsetDateTime.now())
+                .title(exception.getMessage())
+                .build();
+
+        return ResponseEntity.status(status).body(errorDescription);
+    }
+
     @ExceptionHandler(CarModelNotFoundException.class)
     public ResponseEntity<Object> handleCarModelNotFound(CarModelNotFoundException exception) {
         HttpStatus status = HttpStatus.NOT_FOUND;
 
-        ErrorDescription errorDescription =ErrorDescription
+        ErrorDescription errorDescription = ErrorDescription
                 .builder()
                 .status(status.value())
                 .time(OffsetDateTime.now())

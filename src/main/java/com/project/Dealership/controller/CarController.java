@@ -10,8 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -39,6 +42,13 @@ public class CarController {
         CarResponse result = carService.save(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @PostMapping("/{id}/upload")
+    public ResponseEntity<List<String>> uploadFiles(@PathVariable("id") Long carId, @RequestParam("files") List<MultipartFile> multipartFiles) throws IOException {
+        List<String> files = carService.uploadFiles(carId, multipartFiles);
+
+        return ResponseEntity.status(HttpStatus.OK).body(files);
     }
 
 }

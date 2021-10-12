@@ -31,6 +31,8 @@ public class Employee {
 
     private Long totalSalesCount;
 
+    private Boolean isActive;
+
     public void incrementTotalSales() {
         this.totalSalesCount++;
     }
