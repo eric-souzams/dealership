@@ -35,9 +35,9 @@ public class Car {
     private Double price;
 
     @ElementCollection()
-    private List<String> files = new ArrayList<>();
+    private List<FileUpload> files = new ArrayList<>();
 
-    public void addFiles(List<String> files) {
+    public void addFiles(List<FileUpload> files) {
         this.getFiles().addAll(files);
     }
 

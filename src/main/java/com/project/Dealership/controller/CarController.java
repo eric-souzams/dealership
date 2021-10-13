@@ -2,6 +2,7 @@ package com.project.Dealership.controller;
 
 import com.project.Dealership.dto.request.CarRequest;
 import com.project.Dealership.dto.response.CarResponse;
+import com.project.Dealership.dto.response.FileUploadResponse;
 import com.project.Dealership.service.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -45,8 +46,9 @@ public class CarController {
     }
 
     @PostMapping("/{id}/upload")
-    public ResponseEntity<List<String>> uploadFiles(@PathVariable("id") Long carId, @RequestParam("files") List<MultipartFile> multipartFiles) throws IOException {
-        List<String> files = carService.uploadFiles(carId, multipartFiles);
+    public ResponseEntity<List<FileUploadResponse>> uploadFiles(@PathVariable("id") Long carId,
+                                                                @RequestParam("files") List<MultipartFile> multipartFiles) throws IOException {
+        List<FileUploadResponse> files = carService.uploadFiles(carId, multipartFiles);
 
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }

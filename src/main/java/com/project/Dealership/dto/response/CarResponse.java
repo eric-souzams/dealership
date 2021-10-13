@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class CarResponse {
     private String description;
     private CarModel model;
     private Double price;
-    private List<String> files;
+    private List<FileUploadResponse> files;
 
     public static CarResponse toResponse(Car car) {
         CarResponse response = new CarResponse();
@@ -30,7 +31,11 @@ public class CarResponse {
         response.setDescription(car.getDescription());
         response.setModel(car.getModel());
         response.setPrice(car.getPrice());
-        response.setFiles(car.getFiles());
+
+        List<FileUploadResponse> filesList = car.getFiles().stream()
+                .map(FileUploadResponse::toResponse)
+                .collect(Collectors.toList());
+        response.setFiles(filesList);
 
         return response;
     }
