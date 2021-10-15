@@ -9,9 +9,13 @@ import lombok.Setter;
 public class CarModelResponse {
 
     private Long id;
+
     private String fuel;
+
     private Integer yearManufacture;
+
     private String brand;
+
     private Integer capacity;
 
     public static CarModelResponse toResponse(CarModel carModel) {

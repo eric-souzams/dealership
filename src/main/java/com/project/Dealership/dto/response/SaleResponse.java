@@ -1,8 +1,5 @@
 package com.project.Dealership.dto.response;
 
-import com.project.Dealership.model.entity.Car;
-import com.project.Dealership.model.entity.Client;
-import com.project.Dealership.model.entity.Employee;
 import com.project.Dealership.model.entity.Sales;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,11 +12,11 @@ public class SaleResponse {
 
     private Long id;
 
-    private Car car;
+    private CarResponse car;
 
-    private Client client;
+    private ClientResponse client;
 
-    private Employee employee;
+    private EmployeeResponse employee;
 
     private LocalDateTime sold_at;
 
@@ -27,9 +24,9 @@ public class SaleResponse {
         SaleResponse response = new SaleResponse();
 
         response.setId(sale.getId());
-        response.setCar(sale.getCar());
-        response.setClient(sale.getClient());
-        response.setEmployee(sale.getEmployee());
+        response.setCar(CarResponse.toResponse(sale.getCar()));
+        response.setClient(ClientResponse.toResponse(sale.getClient()));
+        response.setEmployee(EmployeeResponse.toResponse(sale.getEmployee()));
         response.setSold_at(sale.getSold_at());
 
         return response;

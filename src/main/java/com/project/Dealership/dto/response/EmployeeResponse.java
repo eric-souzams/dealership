@@ -1,7 +1,6 @@
 package com.project.Dealership.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;

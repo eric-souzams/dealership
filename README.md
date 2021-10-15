@@ -8,11 +8,60 @@
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;&nbsp;
 </p>
 
+
 ## About
-> Coming soon...
+Dealership is API for companies than want sell cars, and this application will provide a UP on your sales and manage your company of correct shape.
 
 ## Preview
-> Coming soon...
+```
+Cars
+
+GET: http://localhost:8080/cars
+GET: http://localhost:8080/cars/{carId}
+POST: http://localhost:8080/cars
+POST: http://localhost:8080/cars/{id}/upload
+```
+
+```
+Models
+
+GET: http://localhost:8080/car-models
+GET: http://localhost:8080/car-models/{carModelId}
+POST: http://localhost:8080/car-models
+```
+
+```
+Clients
+
+GET: http://localhost:8080/clients
+GET: http://localhost:8080/clients/{clientId}
+POST: http://localhost:8080/clients
+```
+
+```
+Sales
+
+GET: http://localhost:8080/sales
+GET: http://localhost:8080/sales/{saleId}
+POST: http://localhost:8080/sales
+```
+
+```
+Employees
+
+GET: http://localhost:8080/employees
+GET: http://localhost:8080/employees/{employeeId}
+POST: http://localhost:8080/employees
+```
+
+
+## Features
+- UUID [ x ]
+- Files upload [ x ]
+- JSON response refactor [ x ]
+- Custom exceptions and handler [ x ]
+- Tests coverage (coming soon) [ - ]
+
 
 ## Technologies
 This project was developed using the following technologies:

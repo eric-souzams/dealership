@@ -13,12 +13,19 @@ import java.util.stream.Collectors;
 public class CarResponse {
 
     private Long id;
+
     private String name;
+
     private String state;
+
     private String situation;
+
     private String description;
-    private CarModel model;
+
+    private CarModelResponse model;
+
     private Double price;
+
     private List<FileUploadResponse> files;
 
     public static CarResponse toResponse(Car car) {
@@ -29,7 +36,7 @@ public class CarResponse {
         response.setState(car.getState().getDescription());
         response.setSituation(car.getSituation().getDescription());
         response.setDescription(car.getDescription());
-        response.setModel(car.getModel());
+        response.setModel(CarModelResponse.toResponse(car.getModel()));
         response.setPrice(car.getPrice());
 
         List<FileUploadResponse> filesList = car.getFiles().stream()
