@@ -22,10 +22,11 @@ public class SaleResponse {
 
     public static SaleResponse toResponse(Sales sale) {
         SaleResponse response = new SaleResponse();
+        ClientResponse clientResponse = new ClientResponse();
 
         response.setId(sale.getId());
         response.setCar(CarResponse.toResponse(sale.getCar()));
-        response.setClient(ClientResponse.toResponse(sale.getClient()));
+        response.setClient(clientResponse.toResponse(sale.getClient()));
         response.setEmployee(EmployeeResponse.toResponse(sale.getEmployee()));
         response.setSold_at(sale.getSold_at());
 

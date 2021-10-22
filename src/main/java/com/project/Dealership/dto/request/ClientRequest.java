@@ -32,7 +32,7 @@ public class ClientRequest {
     @NotBlank
     private String address;
 
-    public static Client toEntity(ClientRequest request) {
+    public Client toEntity(ClientRequest request) {
         Client client = new Client();
 
         client.setName(request.getName());

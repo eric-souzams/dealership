@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -27,9 +24,7 @@ public class ClientResponse {
 
     private String address;
 
-    //private List<CarResponse> boughtCars = new ArrayList<>();
-
-    public static ClientResponse toResponse(Client client) {
+    public ClientResponse toResponse(Client client) {
         ClientResponse response = new ClientResponse();
 
         response.setId(client.getId());
@@ -38,10 +33,6 @@ public class ClientResponse {
         response.setBirthdate(client.getBirthdate());
         response.setCpf(client.getCpf());
         response.setAddress(client.getAddress());
-
-//        List<CarResponse> cars = client.getBoughtCars().stream()
-//                .map(CarResponse::toResponse).collect(Collectors.toList());
-//        response.setBoughtCars(cars);
 
         return response;
     }

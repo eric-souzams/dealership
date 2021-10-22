@@ -3,6 +3,7 @@
 <p align="center">
   <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#features">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#building">Building</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#contributing">Contributing</a>&nbsp;&nbsp;&nbsp;
@@ -19,7 +20,7 @@ Cars
 GET: http://localhost:8080/cars
 GET: http://localhost:8080/cars/{carId}
 POST: http://localhost:8080/cars
-POST: http://localhost:8080/cars/{id}/upload
+POST: http://localhost:8080/cars/{carId}/upload
 ```
 
 ```
