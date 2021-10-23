@@ -49,12 +49,12 @@ public class ClientService {
         return clientResponse.toResponse(client);
     }
 
-    private Client verifyIfClientExist(Long clientId) throws ClientNotFoundException {
+    private Client verifyIfClientExist(Long clientId) {
         return clientRepository.findById(clientId)
                 .orElseThrow(() -> new ClientNotFoundException(Messages.CLIENT_NOT_FOUND));
     }
 
-    private void verifyIfAlreadyIsClient(String cpf) throws ClientAlreadyExistException {
+    private void verifyIfAlreadyIsClient(String cpf) {
         Optional<Client> result = clientRepository.findByCpf(cpf);
         if (result.isPresent()) {
             throw new ClientAlreadyExistException(Messages.CLIENT_ALREADY_EXITS);
