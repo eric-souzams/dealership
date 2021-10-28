@@ -111,7 +111,6 @@ public class ClientMockServiceTest {
     public void itShouldBeFindAllClients() {
         //given
         Client expectedClient = new ClientMock().newMock();
-        ClientRequest expectedRequest = new ClientRequestMock().newMock();
         ClientResponse expectedResponse = new ClientResponseMock().newMock();
 
         Page<Client> expectedClientPage = new PageImpl<>(List.of(expectedClient));
@@ -125,6 +124,7 @@ public class ClientMockServiceTest {
         //then
         Page<ClientResponse> foundClientsList = clientService.findAll(PageRequest.of(1, 1));
 
-        assertEquals(foundClientsList.toList().get(0).getName(), expectedRequest.getName());
+        assertEquals(foundClientsList.toList().get(0).getId(), expectedClient.getId());
+        assertEquals(foundClientsList.toList().get(0).getName(), expectedClient.getName());
     }
 }

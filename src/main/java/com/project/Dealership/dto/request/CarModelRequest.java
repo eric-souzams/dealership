@@ -3,6 +3,7 @@ package com.project.Dealership.dto.request;
 import com.project.Dealership.model.entity.CarModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
+@Component
 public class CarModelRequest {
 
     @NotBlank
@@ -26,7 +28,7 @@ public class CarModelRequest {
     @Min(1)
     private Integer capacity;
 
-    public static CarModel toEntity(CarModelRequest request) {
+    public CarModel toEntity(CarModelRequest request) {
         CarModel carModel = new CarModel();
 
         carModel.setFuel(request.getFuel());

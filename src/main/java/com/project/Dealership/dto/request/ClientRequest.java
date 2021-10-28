@@ -5,6 +5,7 @@ import com.project.Dealership.model.entity.Client;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Component
 public class ClientRequest {
 
     @NotBlank

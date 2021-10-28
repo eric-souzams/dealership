@@ -4,12 +4,14 @@ import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.entity.CarModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@Component
 public class CarResponse {
 
     private Long id;
@@ -30,13 +32,14 @@ public class CarResponse {
 
     public static CarResponse toResponse(Car car) {
         CarResponse response = new CarResponse();
+        CarModelResponse carModelResponse = new CarModelResponse();
 
         response.setId(car.getId());
         response.setName(car.getName());
         response.setState(car.getState().getDescription());
         response.setSituation(car.getSituation().getDescription());
         response.setDescription(car.getDescription());
-        response.setModel(CarModelResponse.toResponse(car.getModel()));
+        response.setModel(carModelResponse.toResponse(car.getModel()));
         response.setPrice(car.getPrice());
 
         List<FileUploadResponse> filesList = car.getFiles().stream()

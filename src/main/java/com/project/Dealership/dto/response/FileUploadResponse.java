@@ -3,11 +3,13 @@ package com.project.Dealership.dto.response;
 import com.project.Dealership.model.entity.FileUpload;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Getter
 @Setter
+@Component
 public class FileUploadResponse {
 
     private static final String DIRECTORY = "file:///C:/Users/Eric/Downloads/uploads/";

@@ -3,9 +3,11 @@ package com.project.Dealership.dto.response;
 import com.project.Dealership.model.entity.CarModel;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
+@Component
 public class CarModelResponse {
 
     private Long id;
@@ -18,7 +20,7 @@ public class CarModelResponse {
 
     private Integer capacity;
 
-    public static CarModelResponse toResponse(CarModel carModel) {
+    public CarModelResponse toResponse(CarModel carModel) {
         CarModelResponse response = new CarModelResponse();
 
         response.setId(carModel.getId());

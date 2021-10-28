@@ -4,6 +4,7 @@ import com.project.Dealership.model.entity.Car;
 import com.project.Dealership.model.enums.State;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -12,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
+@Component
 public class CarRequest {
 
     @NotBlank

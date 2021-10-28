@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.project.Dealership.model.entity.Employee;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@Component
 public class EmployeeResponse {
 
     private Long id;
