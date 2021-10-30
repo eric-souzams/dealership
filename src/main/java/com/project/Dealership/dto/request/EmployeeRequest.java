@@ -38,7 +38,7 @@ public class EmployeeRequest {
     @NotNull
     private Integer profile;
 
-    public static Employee toEntity(EmployeeRequest request) {
+    public Employee toEntity(EmployeeRequest request) {
         Employee employee = new Employee();
 
         employee.setName(request.getName());

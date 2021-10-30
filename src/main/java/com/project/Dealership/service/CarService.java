@@ -40,33 +40,37 @@ public class CarService {
     private final CarRepository carRepository;
     private final CarModelRepository carModelRepository;
     private final FileUploadRepository fileUploadRepository;
+    private final CarResponse carResponse;
+    private final CarRequest carRequest;
 
     @Value("${file.upload.directory}")
     private String DIRECTORY;
 
-    public CarService(CarRepository carRepository, CarModelRepository carModelRepository, FileUploadRepository fileUploadRepository) {
+    public CarService(CarRepository carRepository, CarModelRepository carModelRepository, FileUploadRepository fileUploadRepository, CarResponse carResponse, CarRequest carRequest) {
         this.carRepository = carRepository;
         this.carModelRepository = carModelRepository;
         this.fileUploadRepository = fileUploadRepository;
+        this.carResponse = carResponse;
+        this.carRequest = carRequest;
     }
 
     @Transactional(readOnly = true)
     public Page<CarResponse> findAll(Pageable pageable) {
         Page<Car> result = carRepository.findAll(pageable);
 
-        return result.map(CarResponse::toResponse);
+        return result.map(carResponse::toResponse);
     }
 
     @Transactional(readOnly = true)
     public CarResponse find(Long id) {
         Car car = verifyIfCarExist(id);
 
-        return CarResponse.toResponse(car);
+        return carResponse.toResponse(car);
     }
 
     @Transactional
     public CarResponse save(CarRequest request) {
-        Car car = CarRequest.toEntity(request);
+        Car car = carRequest.toEntity(request);
 
         car.setSituation(Situation.FOR_SALE);
 
@@ -75,7 +79,7 @@ public class CarService {
 
         car = carRepository.save(car);
 
-        return CarResponse.toResponse(car);
+        return carResponse.toResponse(car);
     }
 
     @Transactional

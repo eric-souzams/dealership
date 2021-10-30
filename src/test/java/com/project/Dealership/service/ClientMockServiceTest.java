@@ -127,4 +127,6 @@ public class ClientMockServiceTest {
         assertEquals(foundClientsList.toList().get(0).getId(), expectedClient.getId());
         assertEquals(foundClientsList.toList().get(0).getName(), expectedClient.getName());
     }
+
+
 }

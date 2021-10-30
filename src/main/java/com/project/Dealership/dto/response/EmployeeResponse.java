@@ -32,7 +32,7 @@ public class EmployeeResponse {
 
     private Boolean isActive;
 
-    public static EmployeeResponse toResponse(Employee employee) {
+    public EmployeeResponse toResponse(Employee employee) {
         EmployeeResponse result = new EmployeeResponse();
 
         result.setId(employee.getId());

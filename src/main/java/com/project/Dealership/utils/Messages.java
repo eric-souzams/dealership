@@ -18,6 +18,7 @@ public abstract class Messages {
 
     //Employee
     public static final String EMPLOYEE_NOT_FOUND = "Employee not has found.";
+    public static final String EMPLOYEE_ALREADY_EXITS = "This employee with this CPF already exists in the database.";
 
     //Handler Exceptions
     public static final String INVALID_FIELDS = "One or more fields are invalid. Fill in correctly and try again.";

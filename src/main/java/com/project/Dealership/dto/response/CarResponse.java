@@ -1,7 +1,6 @@
 package com.project.Dealership.dto.response;
 
 import com.project.Dealership.model.entity.Car;
-import com.project.Dealership.model.entity.CarModel;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -30,7 +29,7 @@ public class CarResponse {
 
     private List<FileUploadResponse> files;
 
-    public static CarResponse toResponse(Car car) {
+    public CarResponse toResponse(Car car) {
         CarResponse response = new CarResponse();
         CarModelResponse carModelResponse = new CarModelResponse();
 

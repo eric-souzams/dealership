@@ -33,7 +33,7 @@ public class CarRequest {
     @NotNull
     private Long modelId;
 
-    public static Car toEntity(CarRequest request) {
+    public Car toEntity(CarRequest request) {
         Car car = new Car();
 
         car.setName(request.getName());

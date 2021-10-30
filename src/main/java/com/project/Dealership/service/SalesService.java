@@ -29,19 +29,21 @@ public class SalesService {
     private final ClientRepository clientRepository;
     private final CarRepository carRepository;
     private final EmployeeRepository employeeRepository;
+    private final SaleResponse saleResponse;
+    private final SaleRequest saleRequest;
 
     @Transactional(readOnly = true)
     public Page<SaleResponse> findAll(Pageable pageable) {
         Page<Sales> result = salesRepository.findAll(pageable);
 
-        return result.map(SaleResponse::toResponse);
+        return result.map(saleResponse::toResponse);
     }
 
     @Transactional(readOnly = true)
     public SaleResponse find(Long id) {
         Sales result = verifyIfSaleExist(id);
 
-        return SaleResponse.toResponse(result);
+        return saleResponse.toResponse(result);
     }
 
     @Transactional
@@ -67,7 +69,7 @@ public class SalesService {
 
         employee.incrementTotalSales();
 
-        return SaleResponse.toResponse(sale);
+        return saleResponse.toResponse(sale);
     }
 
     private Sales verifyIfSaleExist(Long saleId) {
