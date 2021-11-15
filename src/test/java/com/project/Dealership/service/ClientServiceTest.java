@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
-public class ClientMockServiceTest {
+public class ClientServiceTest {
 
     @InjectMocks
     private ClientService clientService;

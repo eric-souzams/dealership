@@ -21,8 +21,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
 public class SalesService {
 
     private final SalesRepository salesRepository;
@@ -30,7 +30,6 @@ public class SalesService {
     private final CarRepository carRepository;
     private final EmployeeRepository employeeRepository;
     private final SaleResponse saleResponse;
-    private final SaleRequest saleRequest;
 
     @Transactional(readOnly = true)
     public Page<SaleResponse> findAll(Pageable pageable) {
